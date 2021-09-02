@@ -5,6 +5,9 @@ const defaultState: BooksState = {
     totalItems: 0,
     items: []
   },
+  book: {
+    volumeInfo:{}
+  },
   loading: false,
   error: null,
   booksPerPage: 16,
@@ -21,6 +24,8 @@ export const booksReducer = (state = defaultState, action: BooksAction): BooksSt
       return {...state, error: action.payload,  loading: false}
     case BooksActionTypes.BOOKS_PAGE:
       return {...state, page: action.payload}
+    case BooksActionTypes.FETCH_BOOK:
+      return {...state, book: action.payload}
     default:
       return state
   }

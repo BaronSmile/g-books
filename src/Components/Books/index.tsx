@@ -2,7 +2,6 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 import './BookCard.css';
 import BookCard from '../BookCard';
-import {useHistory} from "react-router-dom";
 
 const Books = (props: { books: [], paginate: any, index: number, totalItems: number, maxResult: number }) => {
   const {totalItems, paginate, maxResult} = props
@@ -14,7 +13,6 @@ const Books = (props: { books: [], paginate: any, index: number, totalItems: num
       arrTotal.push(i)
     }
   }());
-
 
 
   return (
@@ -29,7 +27,7 @@ const Books = (props: { books: [], paginate: any, index: number, totalItems: num
         pageCount={total}
         containerClassName='pagination'
         initialPage={0}
-        onPageChange={i=>paginate(i)}
+        onPageChange={i => paginate(i)}
         breakClassName='page-item'
         pageClassName='page-link'
         marginPagesDisplayed={3}

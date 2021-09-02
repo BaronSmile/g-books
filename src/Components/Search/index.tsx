@@ -8,15 +8,23 @@ const Search = () => {
   const {books} = useTypedSelector(state => state.books);
   const {fetchBooks} = useActions();
   const [state, setState] = useState({
-    searchTitle: '',
+    searchTitle: sessionStorage.getItem('searchTitle') || '',
     index: 0,
     maxResult: 16
-  })
+  });
+
+  window.onunload = function () {
+    sessionStorage.removeItem('searchTitle');
+  };
+
   useEffect(() => {
+    sessionStorage.setItem('searchTitle', state.searchTitle);
     if (state.searchTitle) {
       fetchBooks(state.searchTitle, state.maxResult, state.index)
     }
+
   }, [state.searchTitle, state.index])
+
 
   const handlerSearch = (title: string) => {
     setState(prevState => ({...prevState, searchTitle: title}))
