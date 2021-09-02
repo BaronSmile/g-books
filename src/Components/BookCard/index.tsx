@@ -1,15 +1,13 @@
-
 import React from 'react';
 import {Card, CardBody, CardImg, CardTitle} from "reactstrap";
 
 import {BooksData} from "../../types/books";
 
 const BookCard = (props: { books: [] }) => {
-
   const dataBooks = props.books.map((book: []) => {
     // @ts-ignore
     const {id, volumeInfo}: BooksData = book;
-    const {title, categories, authors,infoLink} = volumeInfo;
+    const {title, categories, authors} = volumeInfo;
 
     // @ts-ignore
     const tag = (categories !== undefined) ? categories[0] : '';
@@ -23,7 +21,7 @@ const BookCard = (props: { books: [] }) => {
     return (
       <div className='col-lg-3 mb-3' key={id}>
         <Card style={{width: '240px'}} className='m-auto'>
-          <a href={infoLink} style={{textDecoration:'none',color:'#111'}} target="_blank" rel="noreferrer">
+
           <CardImg
             top
             style={{width: '100%', height: '240px'}}
@@ -35,7 +33,7 @@ const BookCard = (props: { books: [] }) => {
             <CardTitle className='card-title fw-bolder'>{title}</CardTitle>
             {writerAuthors}
           </CardBody>
-          </a>
+
         </Card>
       </div>
     )
