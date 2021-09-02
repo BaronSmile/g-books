@@ -7,7 +7,7 @@ import {useHistory} from "react-router-dom";
 const BookCard = (props: { books: [] }) => {
   const router = useHistory()
 
-  const dataBooks = props.books.map((book: []) => {
+  const dataBooks =(props.books) ? props.books.map((book?: []) => {
     // @ts-ignore
     const {id, volumeInfo}: BooksData = book;
     const {title, categories, authors} = volumeInfo;
@@ -38,7 +38,7 @@ const BookCard = (props: { books: [] }) => {
         </Card>
       </div>
     )
-  });
+  }): <h2>No Books</h2>;
 
   return (
     <>{dataBooks}</>
